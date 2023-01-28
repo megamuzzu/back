@@ -53,13 +53,14 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="<?php echo base_url()?>assets/admin/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $name; ?></span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
+
+              <h6><?php echo $name; ?></h6>
+              <span><?php echo $this->session->userdata('email'); ?></span>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -94,7 +95,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="<?php echo base_url()?>admin/lead">
-          <i class="bi bi-person"></i>
+          <i class="bi bi-table"></i>
           <span>Leads USA</span>
         </a>
       </li>
@@ -102,7 +103,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="<?php echo base_url()?>admin/leadaus">
-          <i class="bi bi-person"></i>
+          <i class="bi bi-table"></i>
           <span>Leads Aus</span>
         </a>
       </li>
@@ -111,7 +112,7 @@
       <?php if($this->session->userdata('role') == 1){ ?>
       <li class="nav-item">
         <a class="nav-link collapsed" href="<?php echo base_url()?>admin/users">
-          <i class="bi bi-question-circle"></i>
+          <i class="bi bi-person"></i>
           <span>Admin</span>
         </a>
       </li>
