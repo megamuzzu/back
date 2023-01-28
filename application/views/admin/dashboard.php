@@ -143,7 +143,7 @@
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi-person-badge"></i>
+                      <i class="bi bi-person"></i>
                     </div>
                     <div class="ps-3">
                       <h6><?php echo @count($user_list);?></h6>
