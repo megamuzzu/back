@@ -32,7 +32,7 @@
 
 </head>
 
-<body>
+<body class="toggle-sidebar">
 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
@@ -86,7 +86,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="<?php echo base_url()?>admin">
+        <a class="nav-link collapsed" href="<?php echo base_url()?>admin">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>

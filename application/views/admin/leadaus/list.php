@@ -32,10 +32,6 @@
                           <th scope="col">Issue</th>
                           <th scope="col">Plan</th>
                           <th scope="col">Agent</th>
-                          <th scope="col">Remote Tool</th>
-                          <th scope="col">Remote Id</th>
-                          <th scope="col">Remote Password</th>
-                          <th scope="col">Special Comments</th>
                            <?php if($this->session->userdata('role') == 1){ ?>
                           <th scope="col">Action</th>     
                           <?php }?>
@@ -44,10 +40,6 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
                           <td></td>
                           <td></td>
                           <td></td>

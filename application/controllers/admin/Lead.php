@@ -126,10 +126,6 @@ class Lead extends BaseController
             $row[] = $currentObj->issue;
             $row[] = $currentObj->plan;
             $row[] = $currentObj->agent;
-            $row[] = $currentObj->remote_tool;
-            $row[] = $currentObj->remote_id;
-            $row[] = $currentObj->remote_password;
-            $row[] = $currentObj->special_comments;
             if($this->session->userdata('role') == 1){ 
             $row[] = '<a class="btn btn-sm btn-info" href="'.base_url().'admin/lead/edit/'.$currentObj->id.'">Edit</a>
             <a class="btn btn-sm btn-danger deletebtn" href="#" data-userid="'.$currentObj->id.'">Delete</a>';

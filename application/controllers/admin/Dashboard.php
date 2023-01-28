@@ -37,11 +37,19 @@ class Dashboard extends BaseController
         $lead_list =  $this->leadaus_model->findDynamic($where);
         $data['leadaus_list']  = $lead_list;
 
+        $leadaus_money =  $this->leadaus_model->sum_all();
+        $data['leadaus_money']  = $leadaus_money;
+
 
         $where = array();
         $where['field'] = 'id';  
         $lead_list =  $this->dashboard_model->findDynamic($where);
         $data['lead_list']  = $lead_list;
+
+
+        $lead_money =  $this->dashboard_model->sum_all();
+        $data['lead_money']  = $lead_money;
+
 
 
         $where = array();
@@ -178,10 +186,6 @@ class Dashboard extends BaseController
             $row[] = $currentObj->issue;
             $row[] = $currentObj->plan;
             $row[] = $currentObj->agent;
-            $row[] = $currentObj->remote_tool;
-            $row[] = $currentObj->remote_id;
-            $row[] = $currentObj->remote_password;
-            $row[] = $currentObj->special_comments;
             $row[] = '<a class="btn btn-sm btn-info" href="'.base_url().'admin/lead/edit/'.$currentObj->id.'"><i class="fa fa-pencil"></i></a> <a class="btn btn-sm btn-danger deletebtn" href="#" data-userid="'.$currentObj->id.'"><i class="fa fa-trash"></i></a>';
             $data[] = $row;
         }

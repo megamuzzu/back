@@ -110,4 +110,12 @@ class Leadaus_model extends Base_model
             return $this->db->count_all_results();
         }
 
+        
+        public function sum_all()
+        {
+            $this->db->select_sum('amount');
+            $result = $this->db->get($this->table)->row();  
+            return $result->amount;
+        }
+
 }
