@@ -104,6 +104,20 @@
                 </div>
 
                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Merchant Type</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="merchant" class="form-control">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Call Type</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="call_type" class="form-control">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Agent</label>
                   <div class="col-sm-10">
                     <input type="text" name="agent" class="form-control">
@@ -124,6 +138,15 @@
                   </div>
                 </div>
 
+
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Card Number</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="card_number" class="form-control">
+                  </div>
+                </div>
+
+
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Remote Password</label>
                   <div class="col-sm-10">
@@ -135,6 +158,17 @@
                   <label for="inputText" class="col-sm-2 col-form-label">Special Comments</label>
                   <div class="col-sm-10">
                     <textarea class="tinymce-editor" name="special_comments"></textarea>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Lead Type</label>
+                  <div class="col-sm-10">
+                    <select class="form-select" name="lead_type" aria-label="Default select example">
+                      <option selected>Open this select menu</option>
+                      <option value="1">PP</option>
+                      <option value="2">Printer</option>
+                    </select>
                   </div>
                 </div>
 

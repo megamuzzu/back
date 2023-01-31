@@ -105,6 +105,20 @@
                 </div>
 
                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Merchant Type</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="merchant" class="form-control" value="<?php echo $edit_data->merchant;?>">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Call Type</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="call_type" class="form-control" value="<?php echo $edit_data->call_type;?>">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Agent</label>
                   <div class="col-sm-10">
                     <input type="text" name="agent" class="form-control" value="<?php echo $edit_data->agent;?>">
@@ -126,6 +140,13 @@
                 </div>
 
                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Card Number</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="card_number" class="form-control" value="<?php echo $edit_data->card_number;?>">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Remote Password</label>
                   <div class="col-sm-10">
                     <input type="text" name="remote_password" class="form-control" value="<?php echo $edit_data->remote_password;?>">
@@ -140,12 +161,22 @@
                 </div>
 
                 <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Lead Type</label>
+                  <div class="col-sm-10">
+                    <select class="form-select" name="lead_type" aria-label="Default select example">
+                      <option value="1" <?php echo ($edit_data->lead_type == 1)?'selected':'';?> >PP</option>
+                      <option value="2" <?php echo ($edit_data->lead_type == 2)?'selected':'';?> >Printer</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Status</label>
                   <div class="col-sm-10">
                     <select class="form-select" name="status" aria-label="Default select example">
                       <option selected value="<?php echo $edit_data->status;?>">Open this select menu</option>
-                      <option value="1">Active</option>
-                      <option value="2">Inactive</option>
+                      <option value="1" <?php echo ($edit_data->status == 1)?'selected':'';?>>Active</option>
+                      <option value="2" <?php echo ($edit_data->status == 2)?'selected':'';?>>Inactive</option>
                     </select>
                   </div>
                 </div>

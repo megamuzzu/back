@@ -30,7 +30,38 @@ class Dashboard extends BaseController
         $data = array();
         $this->global['pageTitle'] = 'MyFoodAndSons : Page Content';
 
+        $where = array();
+        $where['field'] = 'id';  
+        $lead_list =  $this->dashboard_model->findDynamic($where);
+        $data['lead_list']  = $lead_list;
 
+        $lead_money =  $this->dashboard_model->sum_all();
+        $data['lead_money']  = $lead_money;
+
+
+        $where = array();
+        $where['field'] = 'id';
+        $where['lead_type'] = 1;  
+        $lead_list_pp =  $this->dashboard_model->findDynamic($where);
+        $data['lead_list_pp']  = $lead_list_pp;
+
+        $lead_money_pp =  $this->dashboard_model->sum_all_pp();
+        $data['lead_money_pp']  = $lead_money_pp;
+
+        $where = array();
+        $where['field'] = 'id';
+        $where['lead_type'] = 2;  
+        $lead_list_us_print =  $this->dashboard_model->findDynamic($where);
+        $data['lead_list_us_print']  = $lead_list_us_print;
+
+        $lead_money_us_print =  $this->dashboard_model->sum_all_aus();
+        $data['lead_money_us_print']  = $lead_money_us_print;
+
+
+        //Dashboard Model Data End
+
+
+        //Lead Aus Model Start
 
         $where = array();
         $where['field'] = 'id';  
@@ -42,23 +73,29 @@ class Dashboard extends BaseController
 
 
         $where = array();
-        $where['field'] = 'id';  
-        $lead_list =  $this->dashboard_model->findDynamic($where);
-        $data['lead_list']  = $lead_list;
+        $where['field'] = 'id';
+        $where['lead_type'] = 1;  
+        $lead_list_aus_pp =  $this->leadaus_model->findDynamic($where);
+        $data['lead_list_aus_pp']  = $lead_list_aus_pp;
 
+        $lead_money_aus_pp =  $this->leadaus_model->sum_all_pp();
+        $data['lead_money_aus_pp']  = $lead_money_aus_pp;
 
-        $lead_money =  $this->dashboard_model->sum_all();
-        $data['lead_money']  = $lead_money;
+        $where = array();
+        $where['field'] = 'id';
+        $where['lead_type'] = 2;  
+        $lead_list_aus_print =  $this->leadaus_model->findDynamic($where);
+        $data['lead_list_aus_print']  = $lead_list_aus_print;
 
+        $lead_money_aus_print =  $this->leadaus_model->sum_all_aus();
+        $data['lead_money_aus_print']  = $lead_money_aus_print;
 
+        //Lead Aus Model End
 
         $where = array();
         $where['field'] = 'id';  
         $user_list =  $this->user_model->findDynamic($where);
         $data['user_list']  = $user_list;
-
-
-
 
 
         $this->loadViews("admin/dashboard", $this->global, $data , NULL);

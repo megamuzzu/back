@@ -30,6 +30,24 @@ class Lead extends BaseController
         
     }
 
+    public function listpopup()
+    {
+        $this->isLoggedIn();
+        $this->global['pageTitle'] = 'MyFoodAndSons : Page Content';
+        $this->loadViews("admin/lead/listpp", $this->global, NULL , NULL);
+        
+    }
+
+
+     public function listprinter()
+    {
+        $this->isLoggedIn();
+        $this->global['pageTitle'] = 'MyFoodAndSons : Page Content';
+        $this->loadViews("admin/lead/listpr", $this->global, NULL , NULL);
+        
+    }
+
+
     // Add New 
     public function addnew()
     {
@@ -49,6 +67,7 @@ class Lead extends BaseController
         $this->load->library('form_validation');                 
         $this->form_validation->set_rules('customer_name','Customer name','required');
         $this->form_validation->set_rules('email','Email','required');
+        $this->form_validation->set_rules('lead_type','Lead Type','required');
         
         
         //form data 
@@ -71,6 +90,10 @@ class Lead extends BaseController
                 $insertData['remote_password']       = $form_data['remote_password'];
                 $insertData['special_comments']       = $form_data['special_comments'];
                 $insertData['status']       = $form_data['status'];
+                $insertData['merchant']       = $form_data['merchant'];
+                $insertData['call_type']       = $form_data['call_type'];
+                $insertData['lead_type']       = $form_data['lead_type'];
+                $insertData['card_number']       = $form_data['card_number'];
                 $insertData['date_at']      = $form_data['date_at'];
 
 
@@ -143,6 +166,122 @@ class Lead extends BaseController
         //output to json format
         echo json_encode($output);
     }
+
+
+
+    // Member list
+    public function ajax_listpp()
+    {
+        $list = $this->dashboard_model->get_datatables_pp();
+        
+       
+        $data = array();
+        $no =(isset($_POST['start']))?$_POST['start']:'';
+        foreach ($list as $currentObj) {
+
+            $filename = (isset($currentObj->image) && $currentObj->image !=='') ? ($currentObj->image) : ("");
+
+            $selected=$currentObj->status==1?'selected':'';
+            $notselected=$currentObj->status==-0?'selected':'';
+           
+            $option =  '<select class ="form-control statuschangebtn" name="status" data-id="'.$currentObj->id.'">
+            <option value="1" '.$selected.'>Active</option>
+            <option value="0" '.$notselected.'>Inactive</option>`
+            </select>';
+            $selected="";
+            $notselected="";
+
+
+
+
+            $temp_date = $currentObj->date_at;
+            $date_at = date("d-m-Y", strtotime($temp_date));
+            $no++;
+            $row = array();
+            $row[] = $date_at;
+            $row[] = $currentObj->customer_name;
+            $row[] = $currentObj->phone;
+            $row[] = $currentObj->email;
+            $row[] = $currentObj->amount;
+            $row[] = $currentObj->issue;
+            $row[] = $currentObj->plan;
+            $row[] = $currentObj->agent;
+            if($this->session->userdata('role') == 1){ 
+            $row[] = '<a class="btn btn-sm btn-info" href="'.base_url().'admin/lead/edit/'.$currentObj->id.'">Edit</a>
+            <a class="btn btn-sm btn-danger deletebtn" href="#" data-userid="'.$currentObj->id.'">Delete</a>';
+            }
+            $row[] = '<a class="btn btn-sm btn-info" href="'.base_url().'admin/lead/view/'.$currentObj->id.'">View Data</a>';
+            $data[] = $row;
+        }
+ 
+        $output = array(
+                        "draw" => (isset($_POST['draw']))?$_POST['draw']:'',
+                        "recordsTotal" => $this->dashboard_model->count_all(),
+                        "recordsFiltered" => $this->dashboard_model->count_filtered(),
+                        "data" => $data,
+                );
+        //output to json format
+        echo json_encode($output);
+    }
+
+
+
+     // Member list
+    public function ajax_listpr()
+    {
+        $list = $this->dashboard_model->get_datatables_pr();
+        
+       
+        $data = array();
+        $no =(isset($_POST['start']))?$_POST['start']:'';
+        foreach ($list as $currentObj) {
+
+            $filename = (isset($currentObj->image) && $currentObj->image !=='') ? ($currentObj->image) : ("");
+
+            $selected=$currentObj->status==1?'selected':'';
+            $notselected=$currentObj->status==-0?'selected':'';
+           
+            $option =  '<select class ="form-control statuschangebtn" name="status" data-id="'.$currentObj->id.'">
+            <option value="1" '.$selected.'>Active</option>
+            <option value="0" '.$notselected.'>Inactive</option>`
+            </select>';
+            $selected="";
+            $notselected="";
+
+
+
+
+            $temp_date = $currentObj->date_at;
+            $date_at = date("d-m-Y", strtotime($temp_date));
+            $no++;
+            $row = array();
+            $row[] = $date_at;
+            $row[] = $currentObj->customer_name;
+            $row[] = $currentObj->phone;
+            $row[] = $currentObj->email;
+            $row[] = $currentObj->amount;
+            $row[] = $currentObj->issue;
+            $row[] = $currentObj->plan;
+            $row[] = $currentObj->agent;
+            if($this->session->userdata('role') == 1){ 
+            $row[] = '<a class="btn btn-sm btn-info" href="'.base_url().'admin/lead/edit/'.$currentObj->id.'">Edit</a>
+            <a class="btn btn-sm btn-danger deletebtn" href="#" data-userid="'.$currentObj->id.'">Delete</a>';
+            }
+            $row[] = '<a class="btn btn-sm btn-info" href="'.base_url().'admin/lead/view/'.$currentObj->id.'">View Data</a>';
+            $data[] = $row;
+        }
+ 
+        $output = array(
+                        "draw" => (isset($_POST['draw']))?$_POST['draw']:'',
+                        "recordsTotal" => $this->dashboard_model->count_all(),
+                        "recordsFiltered" => $this->dashboard_model->count_filtered(),
+                        "data" => $data,
+                );
+        //output to json format
+        echo json_encode($output);
+    }
+
+
 
 
 
@@ -235,6 +374,10 @@ class Lead extends BaseController
             $insertData['remote_password']       = $form_data['remote_password'];
             $insertData['special_comments']       = $form_data['special_comments'];
             $insertData['status']       = $form_data['status'];
+            $insertData['merchant']       = $form_data['merchant'];
+            $insertData['call_type']       = $form_data['call_type'];
+            $insertData['lead_type']       = $form_data['lead_type'];
+            $insertData['card_number']       = $form_data['card_number'];
             $insertData['date_at']      = $form_data['date_at'];
 
             $result = $this->dashboard_model->save($insertData);

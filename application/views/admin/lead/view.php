@@ -71,6 +71,20 @@
                 </div>
 
                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Merchant Type</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="merchant" class="form-control" disabled value="<?php echo $edit_data->merchant;?>">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Call Type</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="call_type" class="form-control" disabled value="<?php echo $edit_data->call_type;?>">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Agent</label>
                   <div class="col-sm-10">
                     <input type="text" name="agent" class="form-control" disabled value="<?php echo $edit_data->agent;?>">
@@ -92,6 +106,13 @@
                 </div>
 
                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Card Number</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="card_number" class="form-control" disabled value="<?php echo $edit_data->card_number;?>">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Remote Password</label>
                   <div class="col-sm-10">
                     <input type="text" name="remote_password" class="form-control" disabled value="<?php echo $edit_data->remote_password;?>">
@@ -104,6 +125,17 @@
                     <textarea class="tinymce-editor" disabled name="special_comments"><?php echo $edit_data->special_comments;?></textarea>
                   </div>
                 </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Lead Type</label>
+                  <div class="col-sm-10">
+                    <select class="form-select" name="lead_type" disabled aria-label="Default select example">
+                      <option value="1" <?php echo ($edit_data->lead_type == 1)?'selected':'';?> >PP</option>
+                      <option value="2" <?php echo ($edit_data->lead_type == 2)?'selected':'';?> >Printer</option>
+                    </select>
+                  </div>
+                </div>
+
 
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Status</label>

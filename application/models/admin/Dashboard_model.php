@@ -7,7 +7,7 @@ class Dashboard_model extends Base_model
     public $table = "lead";
     var $column_order = array(null,'date','customer_name','phone','email','amount','issue','plan','agent','remote_tool','remote_id','remote_password','special_comments','status'); //set column field database for datatable orderable
     var $column_search = array('date','customer_name','phone','email','amount','issue','plan','agent','remote_tool','remote_id','remote_password','special_comments','status'); //set column field database for datatable searchable 
-    var $order = array('id' => 'asc'); // default order
+    var $order = array('id' => 'desc'); // default order
 
         
 
@@ -64,6 +64,29 @@ class Dashboard_model extends Base_model
             $query = $this->db->get();
             return $query->result();
         }
+
+        // Get  List
+        function get_datatables_pp()
+        {
+            $this->_get_datatables_query();
+            if(isset($_POST['length']) && $_POST['length'] != -1)
+            $this->db->limit($_POST['length'], $_POST['start']);
+            $this->db->where('lead_type','1');
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+         // Get  List
+        function get_datatables_pr()
+        {
+            $this->_get_datatables_query();
+            if(isset($_POST['length']) && $_POST['length'] != -1)
+            $this->db->limit($_POST['length'], $_POST['start']);
+            $this->db->where('lead_type','2');
+            $query = $this->db->get();
+            return $query->result();
+        }
+
         // Get Database 
          public function _get_datatables_query()
         {     
@@ -118,6 +141,23 @@ class Dashboard_model extends Base_model
             return $result->amount;
         }
 
+
+        public function sum_all_pp()
+        {
+            $this->db->select_sum('amount');
+            $this->db->where('lead_type','1');
+            $result = $this->db->get($this->table)->row();  
+            return $result->amount;
+        }
+
+
+        public function sum_all_aus()
+        {
+            $this->db->select_sum('amount');
+            $this->db->where('lead_type','2');
+            $result = $this->db->get($this->table)->row();  
+            return $result->amount;
+        }
 
 
 
