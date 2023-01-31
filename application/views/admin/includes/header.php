@@ -94,18 +94,50 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url()?>admin/lead">
-          <i class="bi bi-table"></i>
-          <span>Leads USA</span>
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Leads USA</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="<?php echo base_url()?>admin/lead">
+              <i class="bi bi-circle"></i><span>All Leads</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo base_url()?>admin/lead/listpopup">
+              <i class="bi bi-circle"></i><span>PopUp Leads</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo base_url()?>admin/lead/listprinter">
+              <i class="bi bi-circle"></i><span>Printer Leads</span>
+            </a>
+          </li>
+        </ul>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url()?>admin/leadaus">
-          <i class="bi bi-table"></i>
-          <span>Leads Aus</span>
+        <a class="nav-link collapsed" data-bs-target="#tables-navs" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Leads AUS</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
+        <ul id="tables-navs" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="<?php echo base_url()?>admin/leadaus">
+              <i class="bi bi-circle"></i><span>All Leads</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo base_url()?>admin/leadaus/listpopup">
+              <i class="bi bi-circle"></i><span>PopUp Leads</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo base_url()?>admin/leadaus/listprinter">
+              <i class="bi bi-circle"></i><span>Printer Leads</span>
+            </a>
+          </li>
+        </ul>
       </li>
 
 
@@ -117,6 +149,9 @@
         </a>
       </li>
       <?php }?>
+
+
+
     </ul>
 
   </aside><!-- End Sidebar-->
