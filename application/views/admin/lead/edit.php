@@ -164,6 +164,7 @@
                   <label class="col-sm-2 col-form-label">Lead Type</label>
                   <div class="col-sm-10">
                     <select class="form-select" name="lead_type" aria-label="Default select example">
+                      <option>Select Option</option>
                       <option value="1" <?php echo ($edit_data->lead_type == 1)?'selected':'';?> >PP</option>
                       <option value="2" <?php echo ($edit_data->lead_type == 2)?'selected':'';?> >Printer</option>
                     </select>
@@ -175,6 +176,7 @@
                   <label class="col-sm-2 col-form-label">Status</label>
                   <div class="col-sm-10">
                     <select class="form-select" name="status" aria-label="Default select example">
+                      <option>Select Option</option>
                       <option value="1" <?php echo ($edit_data->status == 1)?'selected':'';?> >Active</option>
                       <option value="2" <?php echo ($edit_data->status == 2)?'selected':''; ?>>Inactive</option>
                     </select>
